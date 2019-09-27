@@ -31,8 +31,8 @@ const showSchema = new mongoose.Schema({
     reservations: {
         type: [ {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Reservation' }
-        ]
+            ref: 'Reservation'
+        }]
     }
 });
 

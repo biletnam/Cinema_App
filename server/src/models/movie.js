@@ -6,18 +6,16 @@ const movieSchema = new mongoose.Schema({
         type: String,
         reqired: true
     },    
-    description: {
-        type: String,
-        reqired: true,
-        minlength: 5,
-        maxlength: 300
+    vote_average: {
+        type: Number,
+        reqired: true
     },
-    director: {
+    overview: {
         type: String,
         required: true
     },
-    year: {
-        type: Number,
+    release_date: {
+        type: Date,
         required: true
     }
 });
@@ -27,9 +25,9 @@ const Movie = mongoose.model('Movie', movieSchema, 'movies');
 function validateMovie(movie) {
     const schema = {
         title: Joi.string().required(),
-        description: Joi.string().required(),
-        director: Joi.string().required(),
-        year: Joi.number().required()
+        vote_average: Joi.number().required(),
+        overview: Joi.string().required(),
+        release_date: Joi.date().required()
     }
     return Joi.validate(movie, schema);
 }

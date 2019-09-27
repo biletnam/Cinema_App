@@ -5,6 +5,15 @@ module.exports = {
 
   },
   getShows: async (req, res) => {
+
+  },
+  addShow: async (req, res) => {
+
+  },
+  updateShow: async (req, res) => {
+
+  },
+  deleteShow: async (req, res) => {
     
   }
 }

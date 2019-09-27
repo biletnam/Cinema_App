@@ -4,10 +4,13 @@ const showsController = require('../controllers/shows');
 
 router
   .route('/')
-  .get(showsController.getShows);
+  .get(showsController.getShows)
+  .post(showsController.addShow);
 
 router
   .route('/:id')
-  .get(showsController.getShowById);
+  .get(showsController.getShowById)
+  .put(showsController.updateShow)
+  .delete(showsController.deleteShow);
 
 module.exports = router;

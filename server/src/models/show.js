@@ -9,7 +9,7 @@ const showSchema = new mongoose.Schema({
     },
     date: {
         type: Date,
-        min: new Date.now(),
+        min: new Date(),
         required: true
     },
     hour: {

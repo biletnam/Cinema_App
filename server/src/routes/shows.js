@@ -10,7 +10,7 @@ router
 router
   .route('/:id')
   .get(showsController.getShowById)
-  .put(showsController.updateShow)
+  // .put(showsController.bookShow)
   .delete(showsController.deleteShow);
 
 module.exports = router;

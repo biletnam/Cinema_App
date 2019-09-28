@@ -5,10 +5,10 @@ import { theme } from './theme';
 
 const GlobalStyle = createGlobalStyle`
     body{
-        padding: 0;
-        margin: 0;
-        font-family: Lato,sans-serif;
-        color: black;
+      color: ${props => props.theme.colors.secondary};
+      font-family: Baumans, sans-serif;
+      margin: 0;
+      padding: 0;
     }
 
     *, *::before, *::after{
@@ -32,7 +32,10 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const StyledWrapper = styled.div`
-  background: white;
+  background: ${props => props.theme.colors.main};
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 `;
 
 const Layout = ({ children }) => (

@@ -5,7 +5,17 @@ const moviesController = require('../controllers/movies');
 // Base route /api/movies
 router
     .route('/')
-    .get(()=>console.log('get'));
+    .get(moviesController.getMovies)
+    .post(moviesController.addMovie);
 
+ router
+    .route('/:id')
+    .get(moviesController.getMovieById)
+    .put(moviesController.updateMovie)
+    .delete(moviesController.removeMovie);
+
+// router
+//     .route('/import-movies')
+//     .get(moviesController.generateMovies)
 
 module.exports = router;

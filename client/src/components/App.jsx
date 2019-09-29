@@ -4,6 +4,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './Header';
 import SearchBar from './SearchBar';
 import SelectBar from './SelectBar';
+import CarouselMostPopular from './CarouselMostPopular';
+import CarouselBestRated from './CarouselBestRated';
 
 function App() {
   return (
@@ -11,6 +13,9 @@ function App() {
       <Header />
       <SearchBar text="find movie" />
       <SelectBar />
+      <Route path="/" exact component={ CarouselMostPopular} />
+      <Route path="/most-popular" component={ CarouselMostPopular} />
+      <Route path="/best-rated" component={ CarouselBestRated} />
     </BrowserRouter>
   );
 }

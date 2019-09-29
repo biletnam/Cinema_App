@@ -6,7 +6,6 @@ import { RightArrow, LeftArrow } from './SliderArrows';
 
 const Slides = styled.div`
   height: 126px;
-  margin-top: 25px;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -23,6 +22,7 @@ const SlideContainer = styled.div`
 
 const ArrowContainer = styled.div`
   display: flex;
+  height: 0;
   justify-content: space-between;
   padding: 0 10px;
   position: relative;
@@ -69,7 +69,7 @@ class Slider extends React.Component {
       <Slides>
 
         <SlideContainer translate={this.state.translateValue}>
-          { this.props.images.map((image, i) => <Slide key={i} image={image} />)}
+          { this.props.images.map((image, i) => <Slide key={i} image={image} onMovieSelect={ this.props.onMovieSelect }/>)}
         </SlideContainer>
 
         <ArrowContainer>

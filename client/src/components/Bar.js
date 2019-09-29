@@ -14,7 +14,6 @@ const Bar = styled.div`
   font-size: var(--font-xs);
   height: 30px;
   justify-content: space-between;
-  margin-top: 25px;
   padding: 0 30px;
 `;
 

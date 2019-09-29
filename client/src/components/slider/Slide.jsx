@@ -9,6 +9,9 @@ const SlideImg = styled.img`
   min-width: 80px;
 `;
 
-const Slide = props => <SlideImg src={props.image}></SlideImg>;
+const Slide = props => <SlideImg
+  src={props.image}
+  onClick={() => props.onMovieSelect(props.image)}
+  ></SlideImg>;
 
 export default Slide;

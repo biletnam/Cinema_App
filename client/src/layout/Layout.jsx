@@ -5,6 +5,7 @@ import { theme } from './theme';
 
 const GlobalStyle = createGlobalStyle`
     body{
+      background: ${props => props.theme.colors.main};
       color: ${props => props.theme.colors.secondary};
       font-family: Baumans, sans-serif;
       margin: 0;
@@ -36,6 +37,9 @@ const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 800px;
 `;
 
 const Layout = ({ children }) => (

@@ -6,7 +6,6 @@ const Select = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-top: 25px;
 `;
 
 const SelectOption = styled(Link)`
@@ -24,15 +23,25 @@ const SelectOption = styled(Link)`
     color: ${props=>props.theme.colors.ternary};
     cursor: pointer;
   }
+  &.active {
+    color: ${props => props.theme.colors.ternary}
+  }
 `;
 
 const SelectBar = props => {
   return (
       <Select>
-        <SelectOption to="/most-popular">
+        <SelectOption
+          id="selectPopular"
+          to="/most-popular"
+          className="active"
+        >
           most popular
         </SelectOption>
-        <SelectOption to="/best-rated">
+        <SelectOption
+          id="selectBestRated"
+          to="/best-rated"
+          >
           highest rated
         </SelectOption>
       </Select>

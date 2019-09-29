@@ -4,20 +4,59 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './Header';
 import SearchBar from './SearchBar';
 import SelectBar from './SelectBar';
-import CarouselMostPopular from './CarouselMostPopular';
-import CarouselBestRated from './CarouselBestRated';
+import Slider from './slider/Slider';
+import SelectedMovie from './SelectedMovie';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Header />
-      <SearchBar text="find movie" />
-      <SelectBar />
-      <Route path="/" exact component={ CarouselMostPopular} />
-      <Route path="/most-popular" component={ CarouselMostPopular} />
-      <Route path="/best-rated" component={ CarouselBestRated} />
-    </BrowserRouter>
-  );
+// to be removed
+import Image1 from '../images/judy.jpg';
+import Image2 from '../images/lion-king.jpg';
+import Image3 from '../images/rambo.jpg';
+// ----
+
+class App extends React.Component {
+  state = {
+    movies: [ // actual list of images will be fetched from db
+      Image1,
+      Image2,
+      Image3,
+      Image1,
+      Image2,
+      Image3
+    ],
+    selectedMovie: Image1
+  }
+
+  // componentDidMount() {
+  //   get list of movies from db and update state
+  // }
+
+  onMovieSelect = movie => {
+    this.setState({ selectedMovie: movie });
+  }
+
+  selectSorting = () => {
+    console.log('klik')
+  }
+
+  render () {
+    return (
+      <BrowserRouter>
+        <Header />
+        <SearchBar
+          text="find movie"
+        />
+        <SelectBar
+        />
+        <Slider
+          images={ this.state.movies }
+          onMovieSelect={ this.onMovieSelect}
+        />
+        <SelectedMovie
+          image={ this.state.selectedMovie }
+        />
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;

@@ -8,14 +8,15 @@ router
     .get(moviesController.getMovies)
     .post(moviesController.addMovie);
 
+router
+    .route('/generate')
+    .get(moviesController.generateMovies)
+
+
  router
     .route('/:id')
     .get(moviesController.getMovieById)
     .put(moviesController.updateMovie)
     .delete(moviesController.removeMovie);
-
-// router
-//     .route('/import-movies')
-//     .get(moviesController.generateMovies)
 
 module.exports = router;

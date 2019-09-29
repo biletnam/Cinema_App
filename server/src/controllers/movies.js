@@ -3,8 +3,19 @@ const {
 } = require('../models/movie');
 
 const movieService = require('../services/movieService');
+const { getNowPlaying, getDetails } = require('../helperFunctions/movies')
 
 module.exports = {
+
+  generateMovies: async (req, res) => {
+    try{
+      let nowPlaying = await getNowPlaying();
+      return res.send(nowPlaying);
+  } catch(error) {
+      res.status(500).send('An error occurred.');
+  }
+},
+
   getMovieById: async function (req, res) {
     try {
         const movie = await Movie.findById(req.params.id);

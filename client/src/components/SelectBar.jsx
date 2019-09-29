@@ -21,7 +21,7 @@ const SelectOption = styled(Link)`
   transition: color .5s;
   width: 50%;
   :hover {
-    color: ${props=>props.theme.colors.hover};
+    color: ${props=>props.theme.colors.ternary};
     cursor: pointer;
   }
 `;

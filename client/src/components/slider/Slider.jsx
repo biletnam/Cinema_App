@@ -17,7 +17,7 @@ const SlideContainer = styled.div`
   display: flex;
   flex-wrap: nowrap;
   height: 100%;
-  transition: transform ease-out .45s;
+  transition: transform ease-out .5s;
   transform: translateX(${props=>props.translate}px);
 `;
 
@@ -33,14 +33,6 @@ class Slider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // images: [ // TO BE RENOVED (instead urls will be passed as props)
-      //   Image1,
-      //   Image2,
-      //   Image3,
-      //   Image2,
-      //   Image1,
-      //   Image3
-      // ],
       currentIndex: 0,
       translateValue: 0
     };
@@ -75,9 +67,11 @@ class Slider extends React.Component {
   render() {
     return (
       <Slides>
+
         <SlideContainer translate={this.state.translateValue}>
           { this.props.images.map((image, i) => <Slide key={i} image={image} />)}
         </SlideContainer>
+
         <ArrowContainer>
           <LeftArrow
             goToPrevSlide={ this.goToPrevSlide }

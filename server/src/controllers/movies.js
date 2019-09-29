@@ -9,8 +9,28 @@ module.exports = {
 
   generateMovies: async (req, res) => {
     try{
-      let nowPlaying = await getNowPlaying();
-      return res.send(nowPlaying);
+    let nowPlaying = await getNowPlaying();
+    
+    nowPlaying.results.map(item => {
+      const movie = new Movie({
+        title: item.title,
+        original_language: item.original_language,
+        id: item.id,
+        adult: item.adult,
+        release_date: item.release_date,
+        overview: item.overview,
+        vote_average: item.vote_average,
+        vote_count: item.vote_count,
+        poster_path: item.poster_path,
+        popularity: item.popularity,
+        genres: item.genres,
+        video: item.video
+      });
+      
+      movie.save();
+     
+    })
+    return res.send(nowPlaying);
   } catch(error) {
       res.status(500).send('An error occurred.');
   }

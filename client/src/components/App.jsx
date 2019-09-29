@@ -23,7 +23,8 @@ class App extends React.Component {
       Image2,
       Image3
     ],
-    selectedMovie: Image1
+    selectedMovie: Image1,
+    sortBy: 'popular'
   }
 
   // componentDidMount() {
@@ -34,8 +35,8 @@ class App extends React.Component {
     this.setState({ selectedMovie: movie });
   }
 
-  selectSorting = () => {
-    console.log('klik')
+  onSortSelect = sort => {
+    this.setState({ sortBy: sort }); // add logic to sort movies array
   }
 
   render () {
@@ -46,6 +47,8 @@ class App extends React.Component {
           text="find movie"
         />
         <SelectBar
+          active={ this.state.sortBy }
+          onSortSelect={ this.onSortSelect }
         />
         <Slider
           images={ this.state.movies }

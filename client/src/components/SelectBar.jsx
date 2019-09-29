@@ -28,20 +28,27 @@ const SelectOption = styled(Link)`
   }
 `;
 
+// Not sure if we really need to use Browser Router here (now i think we don't so I would change SelectOption to be regular div and not an Link element)
 const SelectBar = props => {
   return (
       <Select>
         <SelectOption
           id="selectPopular"
           to="/most-popular"
-          className="active"
+          className={props.active === 'popular' ? 'active' : null}
+          onClick={() => {
+            props.onSortSelect('popular');
+
+          }}
         >
           most popular
         </SelectOption>
         <SelectOption
           id="selectBestRated"
           to="/best-rated"
-          >
+          className={props.active === 'bestRated' ? 'active' : null}
+          onClick={() => props.onSortSelect('bestRated')}
+        >
           highest rated
         </SelectOption>
       </Select>

@@ -15,6 +15,7 @@ const cors = require('cors');
 
 
 const movies = require('./src/routes/movies');
+const shows = require('./src/routes/shows');
 
 
 app.set('port', 5000);
@@ -30,6 +31,7 @@ app.use(morgan('tiny'));
 app.use(helmet());
 
 app.use('/api/movies', movies);
+app.use('/api/shows', shows);
 
 
 let server = app.listen(app.get('port'), () => {

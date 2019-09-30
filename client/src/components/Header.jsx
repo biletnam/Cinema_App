@@ -3,9 +3,8 @@ import styled from 'styled-components';
 
 const Heading = styled.header`
   align-items: center;
-  background: linear-gradient(180deg, rgba(196, 196, 196, 0.2) 0%, rgba(196, 196, 196, 0) 100%);
   display: flex;
-  height: 60px;
+  height: 10vh;
   justify-content: center;
   width: 100%;
   `;

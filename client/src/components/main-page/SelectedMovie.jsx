@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const MovieContainer = styled.div`
   align-items: center;
-  background: linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, rgba(196, 196, 196, 0.2) 100%);
   display: flex;
   height: 50%;
   justify-content: center;
   width: 100%;
 `;
 
-const MoviePoster = styled.div`
+const MoviePoster = styled(Link)`
   box-shadow: 0 0 8px 1px rgba(196, 196, 196, 0.2);
   cursor: pointer;
   height: 90%;
@@ -20,7 +20,7 @@ const MoviePoster = styled.div`
 
 const Poster = styled.img`
   height: 100%;
-  width: auto;
+  // width: auto;
 `;
 
 const ExpandIcon = styled.i`
@@ -38,7 +38,7 @@ const ExpandIcon = styled.i`
 const SelectedMovie = props => {
   return (
     <MovieContainer>
-      <MoviePoster >
+      <MoviePoster to="movie-info">
         <Poster src={ props.image } alt="Movie Poster"/>
         <ExpandIcon className="fas fa-expand-arrows-alt" />
       </MoviePoster>

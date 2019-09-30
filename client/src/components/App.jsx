@@ -2,10 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import Header from './Header';
-import SearchBar from './SearchBar';
-import SelectBar from './SelectBar';
-import Slider from './slider/Slider';
-import SelectedMovie from './SelectedMovie';
+import MainPage from './MainPage';
 
 // to be removed
 import Image1 from '../images/judy.jpg';
@@ -43,20 +40,16 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Header />
-        <SearchBar
-          text="find movie"
-        />
-        <SelectBar
-          active={ this.state.sortBy }
-          onSortSelect={ this.onSortSelect }
-        />
-        <Slider
-          images={ this.state.movies }
-          onMovieSelect={ this.onMovieSelect}
-        />
-        <SelectedMovie
-          image={ this.state.selectedMovie }
-        />
+        <Route path="/" exact>
+          <MainPage
+            movies={ this.state.movies }
+            selectedMovie={ this.state.selectedMovie }
+            sortBy={ this.state.sortBy }
+            onMovieSelect={ this.onMovieSelect }
+            onSortSelect={ this.onSortSelect }
+          />
+        </Route>
+
       </BrowserRouter>
     );
   }

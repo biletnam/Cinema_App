@@ -33,13 +33,9 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const StyledWrapper = styled.div`
-  background: ${props => props.theme.colors.main};
-  display: flex;
-  flex-direction: column;
+  background: linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, rgba(196, 196, 196, 0.2) 100%);
   height: 100vh;
-  justify-content: space-between;
-  margin: 0 auto;
-  max-width: 800px;
+  width: 100vw;
 `;
 
 const Layout = ({ children }) => (

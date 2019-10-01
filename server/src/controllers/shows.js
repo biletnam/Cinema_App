@@ -18,25 +18,25 @@ module.exports = {
       res.status(500).send('An error occurred');
     }
   },
-  addShow: async (req, res) => {
-    try {
-      const { error } = validate(req.body);
-      if (error) return res.status(400).send(error.details[0].message);
+  // addShow: async (req, res) => {
+  //   try {
+  //     const { error } = validate(req.body);
+  //     if (error) return res.status(400).send(error.details[0].message);
 
-      const show = new Show({
-        movie: req.body.movie,
-        date: req.body.date,
-        hour: req.body.hour,
-        price: req.body.price,
-        seatsAvailable: req.body.seatsAvailable,
-        reservations: []
-      });
-      await show.save();
-      res.send(show);
-    } catch (err) {
-      res.status(500).send('An error occurred');
-    }
-  },
+  //     const show = new Show({
+  //       movie: req.body.movie,
+  //       date: req.body.date,
+  //       hour: req.body.hour,
+  //       price: req.body.price,
+  //       seatsAvailable: req.body.seatsAvailable,
+  //       reservations: []
+  //     });
+  //     await show.save();
+  //     res.send(show);
+  //   } catch (err) {
+  //     res.status(500).send('An error occurred');
+  //   }
+  // },
 
   // updating show possible only via making reservation, req body must have seat and reservation properties
   // TODO: validation

@@ -14,7 +14,7 @@ const generateShows = async (req, res) => {
     const seats = generateSeats();
     const shows = [];
 
-    const isWeekend = d <= 5;
+    const isWeekend = d >= 5;
     const priceAtDay = Math.round(isWeekend? Math.round(price * 1.5): price);
 
     for(let i=0; i<=3; i++) {

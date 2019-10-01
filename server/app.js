@@ -14,6 +14,7 @@ const cors = require('cors');
 
 const movies = require('./src/routes/movies');
 const shows = require('./src/routes/shows');
+const generateShows = require('./src/routes/generateShows');
 
 
 app.set('port', 5000);
@@ -30,7 +31,7 @@ app.use(helmet());
 
 app.use('/api/movies', movies);
 app.use('/api/shows', shows);
-
+app.use('/api/generate-shows', generateShows);
 
 let server = app.listen(app.get('port'), () => {
     var port = server.address().port;

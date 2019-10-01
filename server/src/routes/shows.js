@@ -5,8 +5,6 @@ const showsController = require('../controllers/shows');
 router
   .route('/')
   .get(showsController.getShows);
-  // .post(showsController.generateShows);
-  // .post(showsController.addShow);
 
 router
   .route('/:id')

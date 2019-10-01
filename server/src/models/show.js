@@ -7,9 +7,10 @@ const showSchema = new mongoose.Schema({
         ref: 'Movie',
         required: true
     },
-    date: {
-        type: Date,
-        min: new Date(),
+    day: {
+        type: Number,
+        min: 0,
+        max: 6,
         required: true
     },
     hour: {
@@ -40,7 +41,7 @@ const Show = mongoose.model('Show', showSchema, 'shows');
 function validateShow(show) {
     const schema = {
         movie: Joi.string().required(),
-        date: Joi.date().greater('now').required(),
+        day: Joi.number().min(0).max(6).required(),
         hour: Joi.number().integer().min(10).max(22).required(),
         price: Joi.number().integer().min(10).max(30).required(),
         seatsAvailable: Joi.array().min(0).max(100).items(Joi.number().min(1).max(100)).required(),

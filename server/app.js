@@ -12,8 +12,6 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const cors = require('cors');
 
-
-
 const movies = require('./src/routes/movies');
 const shows = require('./src/routes/shows');
 

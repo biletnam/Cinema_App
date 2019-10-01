@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Bar = styled.div`
+export const Bar = styled.div`
   align-items: center;
   background: linear-gradient(
     90deg,
@@ -17,4 +17,18 @@ const Bar = styled.div`
   padding: 0 30px;
 `;
 
-export default Bar;
+export const SearchInput = styled.input`
+  background: transparent;
+  border: none;
+  color: ${props => props.theme.colors.main};
+  cursor: text;
+  font: inherit;
+  outline: none;
+  &::placeholder {
+    color: ${props => props.theme.colors.main};
+  }
+`;
+
+export const SearchIcon = styled.i`
+  color: ${props => props.theme.colors.secondary};
+`;

@@ -1,33 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import Slide from './Slide';
-import { RightArrow, LeftArrow } from './SliderArrows';
+import Slide from './slider/Slide';
+import { RightArrow, LeftArrow } from './slider/SliderArrows';
 
-const Slides = styled.div`
-  height: 126px;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-`;
-
-const SlideContainer = styled.div`
-  align-items: center;
-  display: flex;
-  flex-wrap: nowrap;
-  height: 100%;
-  transition: transform ease-out .5s;
-  transform: translateX(${props=>props.translate}px);
-`;
-
-const ArrowContainer = styled.div`
-  display: flex;
-  height: 0;
-  justify-content: space-between;
-  padding: 0 10px;
-  position: relative;
-  top: -80px;
-`;
+import { Slides, SlideContainer, ArrowContainer } from './styled/SliderStyle';
 
 class Slider extends React.Component {
   constructor(props) {
@@ -47,7 +23,7 @@ class Slider extends React.Component {
     }
     this.setState(prevState => ({
       currentIndex: prevState.currentIndex -1,
-      translateValue: prevState.translateValue + 100
+      translateValue: prevState.translateValue + 110
     }));
   }
 
@@ -60,7 +36,7 @@ class Slider extends React.Component {
     }
     this.setState(prevState => ({
       currentIndex: prevState.currentIndex +1,
-      translateValue: prevState.translateValue - 100
+      translateValue: prevState.translateValue - 110
     }));
   }
 
@@ -69,6 +45,7 @@ class Slider extends React.Component {
       <Slides>
 
         <SlideContainer translate={this.state.translateValue}>
+          {/* index to be replaced by id of movie, when we have movie list fetched from db */}
           { this.props.images.map((image, i) => <Slide key={i} image={image} onMovieSelect={ this.props.onMovieSelect }/>)}
         </SlideContainer>
 

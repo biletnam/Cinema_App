@@ -12,50 +12,31 @@ const generateShows = async (req, res) => {
     const hours = ['10', '16', '13', '22', '19'];
     const price = 20;
     const seats = generateSeats();
-    shows = [];
+    const shows = [];
 
-    if (d < 5) {
-      for(let h=0; h<=3; h++) {
-        let show = {
-          movie: movies[d + (h*5)]._id,
-          day: d,
-          hour: hours[h],
-          price: price,
-          seatsAvailable: seats
-        }
-        shows.push(show);
-      }
-      let primeTimeShow = {
-        movie: movies[d]._id,
+    const isWeekend = d <= 5;
+    const priceAtDay = Math.round(isWeekend? Math.round(price * 1.5): price);
+
+    for(let i=0; i<=3; i++) {
+      let show = {
+        movie: movies[isWeekend ? i : d + (i*5) ]._id,
         day: d,
-        hour: hours[hours.length-1],
-        price: Math.round(price * 1.5),
+        hour: hours[i],
+        price: priceAtDay,
         seatsAvailable: seats
       }
-      shows.push(primeTimeShow);
+      shows.push(show);
     }
-    if (d >= 5) {
-      for(let h=0; h<=3; h++) {
-        let show = {
-          movie: movies[h]._id,
-          day: d,
-          hour: hours[h],
-          price: Math.round(price * 1.5),
-          seatsAvailable: seats
-        }
-        shows.push(show);
-      }
-      let primeTimeShow = {
-        movie: movies[0]._id,
-        day: d,
-        hour: hours[hours.length-1],
-        price: Math.round(price * 1.5),
-        seatsAvailable: seats
-      }
-      shows.push(primeTimeShow);
+    let primeTimeShow = {
+      movie: movies[isWeekend? 0: d]._id,
+      day: d,
+      hour: hours[hours.length-1],
+      price: priceAtDay,
+      seatsAvailable: seats
     }
-
-  res.send(shows);
+    shows.push(primeTimeShow);
+    console.log("send")
+    res.send(shows);
 
   } catch (error) {
       res.status(500).send('An error occured.');

@@ -1,43 +1,40 @@
-const { Show, validate } = require('../models/show');
+// const { Show, validate } = require('../models/show');
 const { Movie } = require('../models/movie');
 
 const generateShows = async (req, res) => {
   try {
-    // d is a number representing a weekday (0 = monday, 1 = tuesday.. )
-
-    // TODO generate shows to db
-
-    const d = Number(req.params.id);
+    const day = Number(req.params.id);
     const movies = await Movie.find().sort('-popularity');
-    const hours = ['10', '16', '13', '22', '19'];
+    const hours = ['10', '16', '13', '22'];
+    const primeTimeHour = '19';
     const price = 20;
+    const premiumPrice = Math.round(price * 1.5);
     const seats = generateSeats();
     const shows = [];
+    // weekdays counting from monday at 0, so weekend is saturday = 5 and sunday = 6
+    const saturday = 5;
+    const isWeekend = day >= saturday;
+    const priceAtDay = isWeekend ? premiumPrice: price;
 
-    const isWeekend = d >= 5;
-    const priceAtDay = Math.round(isWeekend? Math.round(price * 1.5): price);
-
-    for(let i=0; i<=3; i++) {
-      let show = {
-        movie: movies[isWeekend ? i : d + (i*5) ]._id,
-        day: d,
+    for(let i=0; i < hours.length; i++) {
+      const show = {
+        movie: movies[isWeekend ? i : day + (i*5)]._id,
+        day: day,
         hour: hours[i],
         price: priceAtDay,
         seatsAvailable: seats
       }
       shows.push(show);
     }
-    let primeTimeShow = {
-      movie: movies[isWeekend? 0: d]._id,
-      day: d,
-      hour: hours[hours.length-1],
-      price: priceAtDay,
+    const primeTimeShow = {
+      movie: movies[isWeekend ? 0 : day]._id,
+      day: day,
+      hour: primeTimeHour,
+      price: premiumPrice,
       seatsAvailable: seats
     }
     shows.push(primeTimeShow);
-    console.log("send")
     res.send(shows);
-
   } catch (error) {
       res.status(500).send('An error occured.');
   }

@@ -5,35 +5,34 @@ const generateShows = async (req, res) => {
   try {
     const day = Number(req.params.id);
     const movies = await Movie.find().sort('-popularity');
-    const hours = ['10', '16', '13', '22'];
+    const startHoursOfShows = ['10', '13', '16', '19', '22'];
     const primeTimeHour = '19';
     const price = 20;
     const premiumPrice = Math.round(price * 1.5);
     const seats = generateSeats();
-    const shows = [];
-    // weekdays counting from monday at 0, so weekend is saturday = 5 and sunday = 6
+       // weekdays counting from monday at 0, so weekend is saturday = 5 and sunday = 6
     const saturday = 5;
     const isWeekend = day >= saturday;
-    const priceAtDay = isWeekend ? premiumPrice: price;
 
-    for(let i=0; i < hours.length; i++) {
-      const show = {
-        movie: movies[isWeekend ? i : day + (i*5)]._id,
+    let shows = [];
+
+    shows = startHoursOfShows.map((startHour, i)=>{
+      const isPremiumHour = primeTimeHour.includes(startHour);
+      let movie = null;
+      if (isPremiumHour){
+        movie = movies[isWeekend ? 0 : day]._id;
+      } else {
+        movie = movies[isWeekend ? i : day + (i*5)]._id;
+      }
+      return {
+        movie: movie,
         day: day,
-        hour: hours[i],
-        price: priceAtDay,
+        hour: startHour,
+        price: isWeekend || isPremiumHour ? premiumPrice : price,
         seatsAvailable: seats
       }
-      shows.push(show);
-    }
-    const primeTimeShow = {
-      movie: movies[isWeekend ? 0 : day]._id,
-      day: day,
-      hour: primeTimeHour,
-      price: premiumPrice,
-      seatsAvailable: seats
-    }
-    shows.push(primeTimeShow);
+    })
+    
     res.send(shows);
   } catch (error) {
       res.status(500).send('An error occured.');

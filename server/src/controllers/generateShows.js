@@ -34,10 +34,16 @@ const generateShows = async (req, res) => {
         seatsAvailable: seats
     }
     shows.push(primeTimeShow);
+
+    shows.forEach( el => {
+      const show = new Show(el);
+      show.save();
+    })
+
     res.send(shows);
 
   } catch (error) {
-      res.status(500).send('An error occured here?.');
+      res.status(500).send('An error occured.');
   }
 }
 

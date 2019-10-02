@@ -29,10 +29,12 @@ const showSchema = new mongoose.Schema({
         required: true
     },
     reservations: {
-        type: [ {
+        type: [
+            {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Reservation'
-        }]
+            }
+        ]
     }
 });
 

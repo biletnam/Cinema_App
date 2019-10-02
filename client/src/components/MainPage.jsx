@@ -21,11 +21,11 @@ class MainPage extends React.Component {
           onSortSelect={ this.props.onSortSelect }
           />
         <Slider
-          images={ this.props.movies }
+          movieList={ this.props.movieList }
           onMovieSelect={ this.props.onMovieSelect}
           />
         <SelectedMovie
-          image={ this.props.selectedMovie }
+          selectedMovie={ this.props.selectedMovie }
           />
       </MainPageContainer>
     );

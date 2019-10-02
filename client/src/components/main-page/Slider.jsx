@@ -28,7 +28,7 @@ class Slider extends React.Component {
   }
 
   goToNextSlide = () => {
-    if (this.state.currentIndex === this.props.images.length - 1) {
+    if (this.state.currentIndex === this.props.movieList.length - 1) {
       return this.setState({
         currentIndex: 0,
         translateValue: 0
@@ -45,8 +45,13 @@ class Slider extends React.Component {
       <Slides>
 
         <SlideContainer translate={this.state.translateValue}>
-          {/* index to be replaced by id of movie, when we have movie list fetched from db */}
-          { this.props.images.map((image, i) => <Slide key={i} image={image} onMovieSelect={ this.props.onMovieSelect }/>)}
+          { this.props.movieList.length === 0 ?
+          <div> LOADING </div> :
+          this.props.movieList.map((movie) => <Slide
+            key={movie._id}
+            movie={movie}
+            onMovieSelect={ this.props.onMovieSelect }
+          />)}
         </SlideContainer>
 
         <ArrowContainer>

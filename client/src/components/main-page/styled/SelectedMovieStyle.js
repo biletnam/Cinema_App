@@ -12,7 +12,7 @@ export const MovieContainer = styled.div`
 export const MoviePoster = styled(Link)`
   box-shadow: 0 0 8px 1px rgba(196, 196, 196, 0.2);
   cursor: pointer;
-  height: 90%;
+  height: 95%;
   position: relative;
   width: auto;
 `;
@@ -29,6 +29,6 @@ export const ExpandIcon = styled.i`
   top: 2px;
   z-index: 10;
   &:hover {
-    color: ${props => props.theme.colors.secondary};
+    color: ${props => props.theme.colors.hover};
   }
 `;

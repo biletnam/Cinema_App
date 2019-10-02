@@ -28,7 +28,7 @@ const generateShows = async (req, res) => {
         movie: movie,
         day: day,
         hour: startHour,
-        price: isWeekend || isPremiumHour ? premiumPrice : price,
+        price: (isWeekend || isPremiumHour) ? premiumPrice : price,
         seatsAvailable: seats
       }
     })

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SearchBar from './main-page/SearchBar';
+import RepertoireBar from './main-page/ReportoireBar';
 import SelectBar from './main-page/SelectBar';
 import Slider from './main-page/Slider';
 import SelectedMovie from './main-page/SelectedMovie';
@@ -14,6 +15,7 @@ class MainPage extends React.Component {
         <SearchBar
           text="find movie"
           />
+        <RepertoireBar />
         <SelectBar
           sortBy={ this.props.sortBy }
           onSortSelect={ this.props.onSortSelect }

@@ -4,6 +4,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './Header';
 import MainPage from './MainPage';
 
+import movies from '../api/movies';
+
 // to be removed
 import Image1 from '../images/judy.jpg';
 import Image2 from '../images/lion-king.jpg';

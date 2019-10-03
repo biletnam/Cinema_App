@@ -4,7 +4,11 @@ import { ShowContainer, Time, Title, Poster, BuyTickets, SoldOut, LastTicket } f
 
 const weekdays = ['monday', 'tueasday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 const base_url = 'https://image.tmdb.org/t/p/w500';
+
 const Show = props => {
+
+  const showPath = `/book-seats/${props.show._id}`;
+
   return (
     <ShowContainer>
 
@@ -21,7 +25,7 @@ const Show = props => {
       </LastTicket>}
 
       {props.show.seatsAvailable.length > 0 ?
-        <BuyTickets to="/movie-info/"> {/*link to movie page here or directly to buy ticket page*/}
+        <BuyTickets to={ showPath }>
           Buy your ticket now!
         </BuyTickets> :
         <SoldOut>

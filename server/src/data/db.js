@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Fawn = require("fawn");
 Fawn.init(mongoose);
 
-const dburl = "mongodb+srv://Todo:T8p1QIfTH51PPrFC1Pjk@cluster0-t7gr5.mongodb.net/cinema?retryWrites=true";
+const dburl = process.env.CINEMA_DB_URL;
 mongoose.connect(dburl, {
     useNewUrlParser: true
 });

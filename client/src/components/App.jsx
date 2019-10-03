@@ -5,8 +5,6 @@ import Header from './Header';
 import MainPage from './MainPage';
 import ReportoirePage from './RepertoirePage';
 
-import movies from '../api/movies';
-
 import { sortOptions } from './main-page/SelectBar';
 
 class App extends React.Component {
@@ -63,9 +61,7 @@ class App extends React.Component {
           />
         </Route>
         <Route path="/repertoire">
-          <ReportoirePage
-            movies= {this.state.movies }
-          />
+          <ReportoirePage />
         </Route>
 
       </BrowserRouter>

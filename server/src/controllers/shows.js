@@ -18,16 +18,13 @@ module.exports = {
       res.status(500).send('An error occurred');
     }
   },
-  // updating show possible only via making reservation, req body must have seat and reservation properties
-  // TODO: validation
+  // updating show possible only via making reservation, req body must have seatsAvailable and reservation properties
   bookShow: async (req, res) => {
     try{
       const show = await Show.findById(req.params.id);
       if (!show) return res.status(404).send('Show not found.');
 
-      const seats = show.seatsAvailable;
-      const reservations = show.reservations;
-      show.seatsAvailable = req.body.seatsAvailable;
+      show.seatsAvailable = [...req.body.seatsAvailable];
       show.reservations.push(req.body.reservation);
 
       await show.save();
@@ -36,7 +33,6 @@ module.exports = {
       res.status(500).send('An error occurred');
     }
   },
-
   deleteShow: async (req, res) => {
     try {
       const show = await Show.findByIdAndRemove(req.params.id);

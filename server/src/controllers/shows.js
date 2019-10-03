@@ -27,7 +27,7 @@ module.exports = {
 
       const seats = show.seatsAvailable;
       const reservations = show.reservations;
-      show.seatsAvailable = seats.filter(seat => seat !== req.body.seat);
+      show.seatsAvailable = req.body.seatsAvailable;
       show.reservations.push(req.body.reservation);
 
       await show.save();

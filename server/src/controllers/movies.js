@@ -10,7 +10,7 @@ module.exports = {
   generateMovies: async (req, res) => {
     try{
     let nowPlaying = await getNowPlaying();
-    
+
     nowPlaying.results.map(item => {
       const movie = new Movie({
         title: item.title,
@@ -26,9 +26,9 @@ module.exports = {
         genres: item.genres,
         video: item.video
       });
-      
+
       movie.save();
-     
+
     })
     return res.send(nowPlaying);
   } catch(error) {
@@ -60,7 +60,7 @@ module.exports = {
     try {
         const { error } = validate(req.body);
         if(error) return res.status(400).send(error.details[0].message);
-        
+
         const movie = new Movie({
           title: req.body.title,
           original_language: req.body.original_language,

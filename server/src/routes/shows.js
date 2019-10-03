@@ -4,8 +4,7 @@ const showsController = require('../controllers/shows');
 
 router
   .route('/')
-  .get(showsController.getShows)
-  .post(showsController.addShow);
+  .get(showsController.getShows);
 
 router
   .route('/:id')

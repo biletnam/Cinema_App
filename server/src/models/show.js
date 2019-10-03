@@ -7,21 +7,21 @@ const showSchema = new mongoose.Schema({
         ref: 'Movie',
         required: true
     },
-    date: {
-        type: Date,
-        min: new Date(),
+    day: {
+        type: Number,
+        min: 0,
+        max: 6,
         required: true
     },
     hour: {
-        type: Number,
-        min: 10, // first morning show starts at 10am
-        max: 22, // last show starts at 10pm
+        type: String,
+        enum: ['10', '13', '16', '19', '22'],
         required: true
     },
     price: {
         type: Number,
-        min: 10, // cheapest ticket is 10pln
-        max: 30, // most expensive ticket is 30pln
+        min: 10,
+        max: 30,
         required: true
     },
     seatsAvailable: {
@@ -29,10 +29,12 @@ const showSchema = new mongoose.Schema({
         required: true
     },
     reservations: {
-        type: [ {
+        type: [
+            {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Reservation'
-        }]
+            }
+        ]
     }
 });
 
@@ -41,12 +43,11 @@ const Show = mongoose.model('Show', showSchema, 'shows');
 function validateShow(show) {
     const schema = {
         movie: Joi.string().required(),
-        date: Joi.date().greater('now').required(),
+        day: Joi.number().min(0).max(6).required(),
         hour: Joi.number().integer().min(10).max(22).required(),
         price: Joi.number().integer().min(10).max(30).required(),
-        seatsAvailable: Joi.array().items(Joi.number()).required(), // add range of numbers (depending on number of seats in the room)
-        reservations: Joi.array() // more options?
-
+        seatsAvailable: Joi.array().min(0).max(100).items(Joi.number().min(1).max(100)).required(),
+        reservations: Joi.array()
     }
     return Joi.validate(show, schema);
 }

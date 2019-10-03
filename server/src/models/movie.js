@@ -17,10 +17,19 @@ const movieSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    vote_average: Number,
+    vote_average: {
+        type: Number,
+        required: true
+    },
     vote_count: Number,
-    poster_path: String,
-    popularity: Number,
+    poster_path: {
+        type: String,
+        required: true
+    },
+    popularity: {
+        type: Number,
+        required: true
+    },
     genres: [String],
     video: {
         key: String
@@ -33,17 +42,17 @@ function validateMovie(movie) {
     const schema = {
         title: Joi.string().required(),
         original_title: Joi.string(),
-        oroginal_language: Joi.string(),
+        original_language: Joi.string(),
         id: Joi.number().required(),
         adult: Joi.string(),
         release_date: Joi.date(),
         overview: Joi.string().required(),
-        vote_average: Joi.number(),
+        vote_average: Joi.number().required(),
         vote_count: Joi.number(),
-        poster_path: Joi.string(),
-        popularity: Joi.number(),
+        poster_path: Joi.string().required(),
+        popularity: Joi.number().required(),
         genres: Joi.array(),
-        video:  Joi.string(),
+        video:  Joi.string()
     }
     return Joi.validate(movie, schema);
 }

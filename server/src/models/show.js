@@ -46,7 +46,7 @@ function validateShow(show) {
         day: Joi.number().min(0).max(6).required(),
         hour: Joi.number().integer().min(10).max(22).required(),
         price: Joi.number().integer().min(10).max(30).required(),
-        seatsAvailable: Joi.array().min(0).max(100).items(Joi.number().min(1).max(100)).required(),
+        seatsAvailable: Joi.array().min(0).max(100).required(),
         reservations: Joi.array()
     }
     return Joi.validate(show, schema);

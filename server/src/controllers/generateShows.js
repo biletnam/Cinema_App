@@ -50,7 +50,11 @@ const generateShows = async (req, res) => {
 const generateSeats = () => {
   const seats = [];
   for (let i = 1; i <= 100; i++) {
-    seats.push(i);
+    const seat = {
+      number: i,
+      isAvailable: true
+    };
+    seats.push(seat);
   }
   return seats;
 }

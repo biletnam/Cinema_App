@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Loader from '../Loader'
+import Seat from './Seat';
+
 import shows from '../../api/shows';
 
 class Seats extends React.Component {
@@ -22,7 +24,7 @@ class Seats extends React.Component {
   render() {
     return(
       this.state.show ?
-        <div>Seats {this.state.show.hour}</div>:
+        <Seat />:
         <Loader />
     );
   }

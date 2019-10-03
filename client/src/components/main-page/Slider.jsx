@@ -4,7 +4,7 @@ import Slide from './slider/Slide';
 import { RightArrow, LeftArrow } from './slider/SliderArrows';
 
 import { Slides, SlideContainer, ArrowContainer } from './styled/SliderStyle';
-import Loader from './Loader';
+import Loader from '../Loader';
 
 class Slider extends React.Component {
   constructor(props) {

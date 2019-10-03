@@ -2,6 +2,7 @@ import React from 'react';
 
 import Loader from '../Loader'
 import Seat from './Seat';
+import { Room } from './styled/SeatStyle';
 
 import shows from '../../api/shows';
 
@@ -24,7 +25,13 @@ class Seats extends React.Component {
   render() {
     return(
       this.state.show ?
-        <Seat />:
+        <Room>
+          {this.state.show.seatsAvailable.map(seat => <Seat
+            key={seat.number}
+            number={seat.number}
+            isAvailable={seat.isAvailable}
+          />)}
+        </Room>:
         <Loader />
     );
   }

@@ -5,6 +5,8 @@ import Header from './Header';
 import MainPage from './MainPage';
 import ReportoirePage from './RepertoirePage';
 
+import movies from '../api/movies';
+
 import { sortOptions } from './main-page/SelectBar';
 
 class App extends React.Component {
@@ -51,6 +53,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Header />
+
         <Route path="/" exact>
           <MainPage
             movieList={ this.state.movies }
@@ -60,6 +63,7 @@ class App extends React.Component {
             onSortSelect={ this.onSortSelect }
           />
         </Route>
+
         <Route path="/repertoire">
           <ReportoirePage />
         </Route>

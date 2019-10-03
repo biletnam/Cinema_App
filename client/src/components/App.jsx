@@ -6,32 +6,24 @@ import MainPage from './MainPage';
 import ReportoirePage from './RepertoirePage';
 
 import movies from '../api/movies';
-import shows from '../api/shows';
 
 import { sortOptions } from './main-page/SelectBar';
 
 class App extends React.Component {
   state = {
     movies: [],
-    shows: [],
     selectedMovie: null,
     sortBy: sortOptions[0]
   }
 
   componentDidMount() {
     this.getMovieList();
-    this.getShowList();
   }
 
   getMovieList = async () => {
     const response = await movies.get('/');
     const sortedList = this.sortMovieList(response.data, this.state.sortBy);
     this.setState({movies: sortedList, selectedMovie: sortedList[0]});
-  }
-
-  getShowList = async () => {
-    const response = await shows.get('/');
-    this.setState({shows: response.data});
   }
 
   sortMovieList = (list, sortOption) => {
@@ -72,7 +64,7 @@ class App extends React.Component {
         </Route>
         <Route path="/repertoire">
           <ReportoirePage
-            showList={ this.state.shows }
+            movies= {this.state.movies }
           />
         </Route>
 

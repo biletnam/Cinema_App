@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Heading = styled.header`
+export const Heading = styled.div`
   align-items: center;
   display: flex;
   height: 10vh;

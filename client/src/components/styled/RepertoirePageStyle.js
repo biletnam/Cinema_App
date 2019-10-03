@@ -6,8 +6,9 @@ const RepertoirePageContainer = styled.div`
   height: 90vh;
   justify-content: space-between;
   margin: 0 auto;
-  max-height: 600px;
   max-width: 700px;
+  overflow: scroll;
+  padding-bottom: 30px;
 `;
 
 export default RepertoirePageContainer;

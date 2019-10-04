@@ -15,7 +15,7 @@ import { Heading, Title } from './styled/HeaderStyle';
 
 const Header = () => {
   return (
-    <Heading>
+    <Heading to="/">
       <Title>
         CODERS CINEMA
         {/* <Hamburger className="fas fa-bars"/> */}

@@ -24,6 +24,13 @@ const GlobalStyle = createGlobalStyle`
         --font-sm: 16px;
         --font-xs: 14px;
         --font-xxs: 12px;
+        --bg-bar: linear-gradient(
+          90deg,
+          rgba(196, 196, 196, 0) 0%,
+          #c4c4c4 4.67%,
+          #c4c4c4 43.3%,
+          rgba(196, 196, 196, 0) 97.81%
+          );
     }
 
     ul{
@@ -34,8 +41,8 @@ const GlobalStyle = createGlobalStyle`
 
 const StyledWrapper = styled.div`
   background: linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, rgba(196, 196, 196, 0.2) 100%);
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
 `;
 
 const Layout = ({ children }) => (

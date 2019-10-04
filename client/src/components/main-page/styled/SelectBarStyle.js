@@ -15,6 +15,8 @@ export const SelectOption = styled.div`
     #c4c4c4 43.3%,
     rgba(196, 196, 196, 0) 97.81%
   );
+  background: var(--bg-bar);
+
   color: ${props => props.theme.colors.main};
   display: flex;
   font-size: var(--font-xs);

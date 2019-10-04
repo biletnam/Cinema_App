@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const Heading = styled.header`
+import { Link } from 'react-router-dom';
+
+export const Heading = styled(Link)`
   align-items: center;
   display: flex;
   height: 10vh;

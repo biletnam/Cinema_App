@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import Header from './Header';
 import MainPage from './MainPage';
+import ReportoirePage from './RepertoirePage';
 
 import movies from '../api/movies';
 
@@ -52,6 +53,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Header />
+
         <Route path="/" exact>
           <MainPage
             movieList={ this.state.movies }
@@ -60,6 +62,10 @@ class App extends React.Component {
             onMovieSelect={ this.onMovieSelect }
             onSortSelect={ this.onSortSelect }
           />
+        </Route>
+
+        <Route path="/repertoire">
+          <ReportoirePage />
         </Route>
 
       </BrowserRouter>

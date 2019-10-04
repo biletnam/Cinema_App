@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { MovieContainer, MoviePoster, Poster, ExpandIcon } from './styled/SelectedMovieStyle';
-import Loader from './Loader';
+import Loader from '../Loader';
 
 const base_url = 'https://image.tmdb.org/t/p/w500';
 

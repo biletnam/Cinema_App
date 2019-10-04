@@ -17,9 +17,7 @@ const shows = require('./src/routes/shows');
 const generateShows = require('./src/routes/generateShows');
 
 
-const port = process.env.PORT || 5000;
-
-app.set('port', port);
+app.set('port', 5000);
 app.use(cors({
     origin: true,
     credentials: true

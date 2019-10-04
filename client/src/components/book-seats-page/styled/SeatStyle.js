@@ -3,15 +3,21 @@ import styled from 'styled-components';
 export const Room = styled.div`
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  max-width: 90%;
-  margin: 0 auto;
+  max-width: 700px;
+  width: 90%;
+  margin: 0 auto 30px;
 `;
 
 export const SeatContainer = styled.div`
   align-items: center;
+  background-color: rgba(196, 196, 196, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 1px;
+  &:hover {
+    background-color: rgba(196, 196, 196, 0.1);
+  }
 `;
 
 export const SeatIcon = styled.i`
@@ -20,9 +26,12 @@ export const SeatIcon = styled.i`
   padding: 5px;
   &.available {
     color: green;
+    &.:hover {
+      color: ${props => props.theme.colors.hover};
+      cursor: pointer;
+    }
   }
-  &.available:hover {
-    color: ${props => props.theme.colors.hover};
-    cursor: pointer;
+  &.available.reserved {
+    color: ${props => props.theme.colors.ternary};
   }
 `;

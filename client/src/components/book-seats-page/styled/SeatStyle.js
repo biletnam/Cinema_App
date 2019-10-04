@@ -5,7 +5,7 @@ export const Room = styled.div`
   grid-template-columns: repeat(10, 1fr);
   max-width: 700px;
   width: 90%;
-  margin: 0 auto 30px;
+  margin: 0 auto 10px;
 `;
 
 export const SeatContainer = styled.div`
@@ -26,10 +26,9 @@ export const SeatIcon = styled.i`
   padding: 5px;
   &.available {
     color: green;
-    &.:hover {
-      color: ${props => props.theme.colors.hover};
-      cursor: pointer;
-    }
+  }
+  &.available:hover {
+    cursor: pointer;
   }
   &.available.reserved {
     color: ${props => props.theme.colors.ternary};

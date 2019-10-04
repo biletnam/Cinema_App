@@ -4,6 +4,7 @@ import Loader from '../Loader'
 import Seat from './Seat';
 import { Room } from './styled/SeatStyle';
 import ShowHeader from './ShowHeader';
+import SelectedSeats from './SelectedSeats';
 
 import shows from '../../api/shows';
 import movies from '../../api/movies';
@@ -22,10 +23,6 @@ class Seats extends React.Component {
     this.reserveSeat = this.reserveSeat.bind(this);
     this.renderSeats = this.renderSeats.bind(this);
   }
-  // TODO: add display to show selected seats
-  // TODO: add display with prices
-  // TODO: add logic to handle clicks on seats
-  // TODO: add logic to confirm choice and redirect to choosing tickets page
 
   componentDidMount() {
     this.getShow(this.props.showId)
@@ -78,6 +75,10 @@ class Seats extends React.Component {
           <Room>
             { this.renderSeats() }
           </Room>
+          <SelectedSeats
+            seats={ this.state.show.seatsAvailable }
+            prices={ this.state.show.prices }
+          />
         </>:
         <Loader />
     );

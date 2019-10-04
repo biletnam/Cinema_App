@@ -8,7 +8,9 @@ const generateShows = async (req, res) => {
     const startHoursOfShows = ['10', '13', '16', '22'];
     const primeTimeHour = '19';
     const price = 20;
+    const prices = generatePrices(price);
     const premiumPrice = Math.round(price * 1.5);
+    const premiumPrices = generatePrices(premiumPrice);
     const seats = generateSeats();
     // weekdays counting from monday at 0, so weekend is saturday = 5 and sunday = 6
     const saturday = 5;
@@ -21,7 +23,7 @@ const generateShows = async (req, res) => {
         movie: movies[isWeekend ? i : day + (i*5)]._id,
         day: day,
         hour: startHour,
-        price: isWeekend ? premiumPrice : price,
+        prices: isWeekend ? premiumPrices : prices,
         seatsAvailable: seats
       }
       return show;
@@ -30,7 +32,7 @@ const generateShows = async (req, res) => {
         movie: movies[isWeekend ? 0 : day]._id,
         day: day,
         hour: primeTimeHour,
-        price: premiumPrice,
+        prices: premiumPrices,
         seatsAvailable: seats
     }
     shows.push(primeTimeShow);
@@ -58,5 +60,27 @@ const generateSeats = () => {
   }
   return seats;
 }
+
+const generatePrices = regularPrice => {
+  const prices = [
+    {
+      ticketType: 'regular',
+      price: regularPrice
+    },
+    {
+      ticketType: 'student',
+      price: Math.round(regularPrice * .7)
+    },
+    {
+      ticketType: 'child',
+      price: Math.round(regularPrice * .5)
+    },
+    {
+      ticketType: 'senior',
+      price: Math.round(regularPrice * .6)
+    }
+  ];
+  return prices;
+};
 
 module.exports = generateShows;

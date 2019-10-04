@@ -18,10 +18,8 @@ const showSchema = new mongoose.Schema({
         enum: ['10', '13', '16', '19', '22'],
         required: true
     },
-    price: {
-        type: Number,
-        min: 10,
-        max: 30,
+    prices: {
+        type: Array,
         required: true
     },
     seatsAvailable: {
@@ -45,7 +43,7 @@ function validateShow(show) {
         movie: Joi.string().required(),
         day: Joi.number().min(0).max(6).required(),
         hour: Joi.number().integer().min(10).max(22).required(),
-        price: Joi.number().integer().min(10).max(30).required(),
+        prices: Joi.array().required(),
         seatsAvailable: Joi.array().min(0).max(100).required(),
         reservations: Joi.array()
     }

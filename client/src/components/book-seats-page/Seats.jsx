@@ -11,6 +11,12 @@ class Seats extends React.Component {
     super(props);
     this.state = {};
   }
+  // TODO: Add header with title, date & hour
+  // TODO: add graphic reference for screen in the room
+  // TODO: add display to show selected seats
+  // TODO: add display with prices
+  // TODO: add logic to handle clicks on seats
+  // TODO: add logic to confirm choice and redirect to choosing tickets page
 
   componentDidMount() {
     this.getShow(this.props.showId)

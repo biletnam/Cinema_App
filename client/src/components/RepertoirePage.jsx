@@ -20,7 +20,7 @@ class RepertoirePage extends React.Component {
 
   componentDidMount = async () => {
     await this.getMovieList();
-    await this.checkDate();
+    this.checkDate();
     await this.getShowList();
   }
 
@@ -43,16 +43,20 @@ class RepertoirePage extends React.Component {
       this.setState({day: day - 1});
   }
 
+  renderShows() {
+    return this.state.shows.map(show => <Show
+      show={ show }
+      key={ show._id }
+      movie={ this.state.movies.find(movie => movie._id === show.movie)}
+    />)
+  }
+
   render() {
     return (
       <RepertoirePageContainer>
         <Header>On screen this week</Header>
         {this.state.shows.length > 0 ?
-          this.state.shows.map(show => <Show
-            show={ show }
-            key={ show._id }
-            movie={ this.state.movies.find(movie => movie._id === show.movie)}
-          />):
+          this.renderShows():
           <Loader />
         }
       </RepertoirePageContainer>

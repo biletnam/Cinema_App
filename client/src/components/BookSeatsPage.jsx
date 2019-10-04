@@ -8,5 +8,4 @@ const BookSeatsPage = ({ match }) => {
   );
 }
 
-
 export default BookSeatsPage;

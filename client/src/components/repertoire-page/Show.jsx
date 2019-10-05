@@ -27,7 +27,7 @@ const Show = props => {
       <Title>{props.movie.title}</Title>
 
       { countSeats(props.show.seats) < 5 &&  countSeats(props.show.seats) > 0 && <LastTicket>
-        Only few tickets left!
+        Last tickets!
       </LastTicket>}
 
       { countSeats(props.show.seats) > 0 ?

@@ -5,8 +5,9 @@ const Header = styled.h1`
   color: ${props => props.theme.colors.main};
   font-family: inherit;
   font-size: var(--font-xl);
-  min-height: 30px;
-  margin-bottom: 20px;
+  height: 30px;
+  max-width: 700px;
+  margin: 0 auto;
   text-align: center;
 `;
 

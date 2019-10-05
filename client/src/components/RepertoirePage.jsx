@@ -24,13 +24,15 @@ class RepertoirePage extends React.Component {
 
   render() {
     return (
-      <RepertoirePageContainer>
+      <>
         <Header>On screen this week</Header>
-        {this.props.shows.length > 0 ?
-          this.renderShows():
-          <Loader />
-        }
-      </RepertoirePageContainer>
+        <RepertoirePageContainer>
+          {this.props.shows.length > 0 ?
+            this.renderShows():
+            <Loader />
+          }
+        </RepertoirePageContainer>
+      </>
     );
   }
 }

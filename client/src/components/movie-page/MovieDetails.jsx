@@ -1,23 +1,24 @@
 import React from 'react';
 
-import { MovieContainer, MoviePoster, Poster } from '../main-page/styled/SelectedMovieStyle';
-
-
-const base_url = 'https://image.tmdb.org/t/p/w500';
+// import { MovieContainer } from '../main-page/styled/SelectedMovieStyle';
+import { MovieDetailsContainer } from './styled/MovieInfoContainer';
+import Title from './Title';
+import Rating from './Rating';
+import Overview from './Overview';
 
 const MovieDetails = props => {
   return (
-    <MovieContainer>
-       <div>
-           {props.title}
-       </div>
-       <div>
-           Rating: {props.rating}
-       </div>
-       <div>
-           {props.overview}
-       </div>       
-    </MovieContainer>
+    <MovieDetailsContainer>
+        <Title
+          selectedMovie={ props.selectedMovie }
+        />
+       <Rating 
+          selectedMovie={ props.selectedMovie }
+        />      
+       <Overview 
+          selectedMovie={ props.selectedMovie }
+        />   
+    </MovieDetailsContainer>
   );
 }
 

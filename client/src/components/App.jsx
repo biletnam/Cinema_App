@@ -41,6 +41,7 @@ class App extends React.Component {
 
   onMovieSelect = movie => {
     this.setState({ selectedMovie: movie });
+    this.setState({title: movie.title})
   }
 
   onSortSelect = sortOption => {

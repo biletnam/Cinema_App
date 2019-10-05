@@ -4,9 +4,10 @@ export const Screen = styled.div`
   align-items: center;
   background-color: ${props => props.theme.colors.secondary};
   display: flex;
-  height: 60px;
   justify-content: center;
   margin: 10px auto;
+  min-height: 60px;
+  padding: 10px;
   transform: perspective(250px) rotateX(-50deg);
   width: 50%;
 `;

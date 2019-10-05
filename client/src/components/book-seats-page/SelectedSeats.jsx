@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Display, SelectedSeat, Prices, ProceedBtn } from './styled/SelectedSeatsStyle';
+import { Display, SelectedSeat, Divider, ProceedBtn } from './styled/SelectedSeatsStyle';
 
 const SelectedSeats = props => {
   const seats = []
@@ -8,7 +8,9 @@ const SelectedSeats = props => {
 
   const displaySelectedSeats = () => {
     return seats.map(seat => {
-      return (<SelectedSeat key={seat.number}>
+      return (<SelectedSeat
+        key={seat.number}
+      >
         {seat.number}
       </ SelectedSeat>
       )}
@@ -28,14 +30,14 @@ const SelectedSeats = props => {
   return(
     <Display>
 
-      <div>
-        selected seats:
+      <div>selected seats:</div>
+      <Divider>
         {displaySelectedSeats()}
-      </div>
+      </Divider>
       <div>price list:</div>
-      <Prices>
+      <Divider>
         {displayPrices()}
-      </Prices>
+      </Divider>
 
       { seats.length > 0 &&
         <ProceedBtn>

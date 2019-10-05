@@ -6,10 +6,10 @@ export const Display = styled.div`
 `;
 
 export const SelectedSeat = styled.div`
-  margin: 10px;
+  margin: 5px;
 `;
 
-export const Prices = styled.div`
+export const Divider = styled.div`
   align-items: center;
   border-top: 2px solid;
   border-bottom: 2px solid;

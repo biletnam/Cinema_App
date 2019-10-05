@@ -39,13 +39,13 @@ class Seats extends React.Component {
             movie={ this.props.movie }
             show={ this.props.show}
           />
-          <Room>
-            { this.renderSeats() }
-          </Room>
           <SelectedSeats
             seats={ this.props.show.seats }
             prices={ this.props.show.prices }
           />
+          <Room>
+            { this.renderSeats() }
+          </Room>
         </>:
         <Loader />
     );

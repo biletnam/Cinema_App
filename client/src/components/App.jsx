@@ -3,7 +3,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import Header from './Header';
 import MainPage from './MainPage';
-import ReportoirePage from './RepertoirePage';
+import RepertoirePage from './RepertoirePage';
+import BookSeatsPage from './BookSeatsPage';
 
 import movies from '../api/movies';
 
@@ -64,9 +65,9 @@ class App extends React.Component {
           />
         </Route>
 
-        <Route path="/repertoire">
-          <ReportoirePage />
-        </Route>
+        <Route path="/repertoire" component={ RepertoirePage } />
+
+        <Route path="/book-seats/:id" component={ BookSeatsPage } />
 
       </BrowserRouter>
     );

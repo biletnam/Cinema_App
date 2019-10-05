@@ -41,18 +41,22 @@ class Slider extends React.Component {
     }));
   }
 
+  renderSlides() {
+    return this.props.movieList.map((movie) => <Slide
+    key={movie._id}
+    movie={movie}
+    onMovieSelect={ this.props.onMovieSelect }
+  />);
+  }
+
   render() {
     return (
       <Slides>
 
         <SlideContainer translate={this.state.translateValue}>
           { this.props.movieList.length === 0 ?
-          <Loader>LOADING</Loader> :
-          this.props.movieList.map((movie) => <Slide
-            key={movie._id}
-            movie={movie}
-            onMovieSelect={ this.props.onMovieSelect }
-          />)}
+            <Loader>LOADING</Loader> :
+            this.renderSlides()}
         </SlideContainer>
 
         <ArrowContainer>

@@ -29,7 +29,7 @@ class Slider extends React.Component {
   }
 
   goToNextSlide = () => {
-    if (this.state.currentIndex === this.props.movieList.length - 1) {
+    if (this.state.currentIndex === this.props.movies.length - 1) {
       return this.setState({
         currentIndex: 0,
         translateValue: 0
@@ -42,7 +42,7 @@ class Slider extends React.Component {
   }
 
   renderSlides() {
-    return this.props.movieList.map((movie) => <Slide
+    return this.props.movies.map((movie) => <Slide
     key={movie._id}
     movie={movie}
     onMovieSelect={ this.props.onMovieSelect }
@@ -54,7 +54,7 @@ class Slider extends React.Component {
       <Slides>
 
         <SlideContainer translate={this.state.translateValue}>
-          { this.props.movieList.length === 0 ?
+          { this.props.movies.length === 0 ?
             <Loader>LOADING</Loader> :
             this.renderSlides()}
         </SlideContainer>

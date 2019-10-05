@@ -5,8 +5,8 @@ import Header from './repertoire-page/styled/RepertoireHeader';
 import Loader from './Loader';
 import Show from './repertoire-page/Show';
 
-import shows from '../api/shows';
-import movies from '../api/movies';
+import shows from '../services/shows';
+import movies from '../services/movies';
 
 class RepertoirePage extends React.Component {
   constructor (props) {

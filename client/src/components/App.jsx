@@ -1,53 +1,30 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Header from './Header';
 import MainPage from './MainPage';
 import RepertoirePage from './RepertoirePage';
 import BookSeatsPage from './BookSeatsPage';
 
-import movies from '../api/movies';
+import { getMovies, sortMovies, selectMovie } from '../store/actions';
 
 import { sortOptions } from './main-page/SelectBar';
 
 class App extends React.Component {
-  state = {
-    movies: [],
-    selectedMovie: null,
-    sortBy: sortOptions[0]
-  }
 
-  componentDidMount() {
-    this.getMovieList();
-  }
-
-  getMovieList = async () => {
-    const response = await movies.get('/');
-    const sortedList = this.sortMovieList(response.data, this.state.sortBy);
-    this.setState({movies: sortedList, selectedMovie: sortedList[0]});
-  }
-
-  sortMovieList = (list, sortOption) => {
-    switch (sortOption) {
-      case sortOptions[0]:
-        return [...list].sort((a, b) => b.popularity - a.popularity);
-      case sortOptions[1]:
-        return [...list].sort((a, b) => b.vote_average - a.vote_average);
-      default:
-        return list;
-    }
+  componentDidMount = async () => {
+    await this.props.getMovies();
+    this.props.sortMovies(sortOptions[0]);
+    this.props.selectMovie(this.props.movies[0]);
   }
 
   onMovieSelect = movie => {
-    this.setState({ selectedMovie: movie });
+    this.props.selectMovie(movie);
   }
 
   onSortSelect = sortOption => {
-    ;
-    this.setState({
-      sortBy: sortOption,
-      movies: this.sortMovieList(this.state.movies, sortOption)
-    });
+    this.props.sortMovies(sortOption);
   }
 
   render () {
@@ -57,9 +34,8 @@ class App extends React.Component {
 
         <Route path="/" exact>
           <MainPage
-            movieList={ this.state.movies }
-            selectedMovie={ this.state.selectedMovie }
-            sortBy={ this.state.sortBy }
+            movies={ this.props.movies }
+            selectedMovie={ this.props.selectedMovie }
             onMovieSelect={ this.onMovieSelect }
             onSortSelect={ this.onSortSelect }
           />
@@ -74,4 +50,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { movies: state.movies, selectedMovie: state.selectedMovie }
+}
+
+export default connect(mapStateToProps, { getMovies, sortMovies, selectMovie })(App);

@@ -17,16 +17,15 @@ class MainPage extends React.Component {
           />
         <RepertoireBar />
         <SelectBar
-          sortBy={ this.props.sortBy }
           onSortSelect={ this.props.onSortSelect }
-          />
+        />
         <Slider
-          movieList={ this.props.movieList }
+          movies={ this.props.movies }
           onMovieSelect={ this.props.onMovieSelect}
-          />
+        />
         <SelectedMovie
           selectedMovie={ this.props.selectedMovie }
-          />
+        />
       </MainPageContainer>
     );
   }

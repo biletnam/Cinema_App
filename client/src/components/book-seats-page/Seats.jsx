@@ -6,8 +6,8 @@ import { Room } from './styled/SeatStyle';
 import ShowHeader from './ShowHeader';
 import SelectedSeats from './SelectedSeats';
 
-import shows from '../../api/shows';
-import movies from '../../api/movies';
+import shows from '../../services/shows';
+import movies from '../../services/movies';
 
 
 class Seats extends React.Component {

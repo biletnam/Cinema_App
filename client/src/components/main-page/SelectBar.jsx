@@ -8,20 +8,30 @@ export const SelectBar = props => {
   return (
       <Select>
         <SelectOption
-          id="selectPopular"
-          className={props.sortBy === sortOptions[0] ? 'active' : null}
-          onClick={() => props.onSortSelect(sortOptions[0])}
+          className="active"
+          onClick={ event => {
+            toggleActiveClass(event.target, event.target.nextElementSibling)
+            props.onSortSelect(sortOptions[0]);
+          }}
         >
           most popular
         </SelectOption>
 
         <SelectOption
-          id="selectBestRated"
-          className={props.sortBy === sortOptions[1] ? 'active' : null}
-          onClick={() => props.onSortSelect(sortOptions[1])}
+          onClick={event => {
+            toggleActiveClass(event.target, event.target.previousElementSibling)
+            props.onSortSelect(sortOptions[1]);
+          }}
         >
           highest rated
         </SelectOption>
       </Select>
   );
+}
+
+const toggleActiveClass = (target, sibling) => {
+  if(!target.classList.contains('active')) {
+    target.classList.add('active');
+    sibling.classList.remove('active');
+  }
 }

@@ -13,7 +13,7 @@ const Show = props => {
     <ShowContainer>
 
       <Time>
-        <span>{weekdays[props.show.day]}</span> <span>{props.show.hour}.00hr</span>
+        <span>{weekdays[props.show.day]}</span> <span>{props.show.hour}.00hrs</span>
       </Time>
 
       <Poster src={`${base_url}${props.movie.poster_path}`}/>
@@ -28,9 +28,11 @@ const Show = props => {
         <BuyTickets to={ showPath }>
           Buy your ticket now!
         </BuyTickets> :
+
         <SoldOut>
           Sold out..
-        </SoldOut>}
+        </SoldOut>
+      }
 
     </ShowContainer>
     );

@@ -6,7 +6,7 @@ const ShowHeader = props => {
   return (
     <Screen>
       <ShowHeading>
-        {props.movie.title} {props.show.hour}.00hr
+        {props.movie.title} {props.show.hour}.00hrs
       </ShowHeading>
     </Screen>
   );

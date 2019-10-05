@@ -67,6 +67,7 @@ class Slider extends React.Component {
             goToNextSlide={ this.goToNextSlide }
           />
         </ArrowContainer>
+        
       </Slides>
     );
   }

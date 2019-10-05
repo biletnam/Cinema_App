@@ -4,6 +4,13 @@ import { Select, SelectOption } from './styled/SelectBarStyle';
 
 export const sortOptions = ['popular', 'bestRated'];
 
+const toggleActiveClass = (target, sibling) => {
+  if(!target.classList.contains('active')) {
+    target.classList.add('active');
+    sibling.classList.remove('active');
+  }
+}
+
 export const SelectBar = props => {
   return (
       <Select>
@@ -27,11 +34,4 @@ export const SelectBar = props => {
         </SelectOption>
       </Select>
   );
-}
-
-const toggleActiveClass = (target, sibling) => {
-  if(!target.classList.contains('active')) {
-    target.classList.add('active');
-    sibling.classList.remove('active');
-  }
 }

@@ -2,14 +2,14 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import { getMovies, sortMovies, selectMovie } from '../store/actions';
+
+import { sortOptions } from './main-page/SelectBar';
+
 import Header from './Header';
 import MainPage from './MainPage';
 import RepertoirePage from './RepertoirePage';
 import BookSeatsPage from './BookSeatsPage';
-
-import { getMovies, sortMovies, selectMovie } from '../store/actions';
-
-import { sortOptions } from './main-page/SelectBar';
 
 class App extends React.Component {
 
@@ -19,13 +19,9 @@ class App extends React.Component {
     this.props.selectMovie(this.props.movies[0]);
   }
 
-  onMovieSelect = movie => {
-    this.props.selectMovie(movie);
-  }
+  onMovieSelect = movie => this.props.selectMovie(movie);
 
-  onSortSelect = sortOption => {
-    this.props.sortMovies(sortOption);
-  }
+  onSortSelect = sortOption => this.props.sortMovies(sortOption);
 
   render () {
     return (
@@ -41,7 +37,11 @@ class App extends React.Component {
           />
         </Route>
 
-        <Route path="/repertoire" component={ RepertoirePage } />
+        <Route path="/repertoire">
+          <RepertoirePage
+            movies={ this.props.movies }
+          />
+        </Route>
 
         <Route path="/book-seats/:id" component={ BookSeatsPage } />
 

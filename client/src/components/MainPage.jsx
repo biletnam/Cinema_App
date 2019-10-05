@@ -12,24 +12,29 @@ class MainPage extends React.Component {
   render() {
     return(
       <MainPageContainer>
+
         <SearchBar
           text="find movie"
-          />
+        />
+
         <RepertoireBar />
+
         <SelectBar
           onSortSelect={ this.props.onSortSelect }
         />
+
         <Slider
           movies={ this.props.movies }
           onMovieSelect={ this.props.onMovieSelect}
         />
+
         <SelectedMovie
           selectedMovie={ this.props.selectedMovie }
         />
+
       </MainPageContainer>
     );
   }
 }
-
 
 export default MainPage;

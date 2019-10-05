@@ -5,6 +5,7 @@ import Header from './Header';
 import MainPage from './MainPage';
 import RepertoirePage from './RepertoirePage';
 import BookSeatsPage from './BookSeatsPage';
+import MoviePage from './MoviePage'
 
 import movies from '../api/movies';
 
@@ -68,6 +69,12 @@ class App extends React.Component {
         <Route path="/repertoire" component={ RepertoirePage } />
 
         <Route path="/book-seats/:id" component={ BookSeatsPage } />
+
+        <Route path="/movie-info">
+          <MoviePage 
+          selectedMovie={ this.state.selectedMovie }
+          />
+        </Route>
 
       </BrowserRouter>
     );

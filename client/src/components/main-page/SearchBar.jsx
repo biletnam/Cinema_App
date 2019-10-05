@@ -2,7 +2,6 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { selectMovie } from '../../store/actions';
-import movies from '../../services/movies';
 
 import { Bar, SearchInput, SearchIcon } from './styled/SearchBarStyle';
 
@@ -16,9 +15,8 @@ class SearchBar extends React.Component{
   }
 
   async searchAndUpdate(){
-    const response = await movies.get('/');
     let regexp = new RegExp(`.*${this.state.term}.*`, 'i');
-    let matches = response.data.filter((task) => task.title.match(regexp));
+    let matches = this.props.movies.filter((task) => task.title.match(regexp));
 
     if (matches.length>0){
       this.props.selectMovie(matches[0]);

@@ -15,6 +15,7 @@ class MainPage extends React.Component {
 
         <SearchBar
           text="find movie"
+          movies={this.props.movies}
         />
 
         <RepertoireBar />

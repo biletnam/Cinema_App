@@ -25,6 +25,7 @@ export const SearchInput = styled.input`
   cursor: text;
   font: inherit;
   outline: none;
+  width: 100%;
   &::placeholder {
     color: ${props => props.theme.colors.main};
   }

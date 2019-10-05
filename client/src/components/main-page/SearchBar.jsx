@@ -8,15 +8,13 @@ import { Bar, SearchInput, SearchIcon } from './styled/SearchBarStyle';
 class SearchBar extends React.Component{
   state = {term: ''}
 
-  keyPressed = (event) => {
-    if (event.key === "Enter") {
-      this.searchAndUpdate()
-    }
+  keyPressed = () => {
+    this.searchAndUpdate()
   }
 
-  async searchAndUpdate(){
+  searchAndUpdate(){
     let regexp = new RegExp(`.*${this.state.term}.*`, 'i');
-    let matches = this.props.movies.filter((task) => task.title.match(regexp));
+    let matches = this.props.movies.filter(movie => movie.title.match(regexp));
 
     if (matches.length>0){
       this.props.selectMovie(matches[0]);
@@ -28,12 +26,12 @@ class SearchBar extends React.Component{
       <Bar>
         <SearchInput
           type="text"
-          onChange={(e)=>this.setState({term : e.target.value})}
+          onChange={ e => this.setState({term : e.target.value})}
           onKeyPress={this.keyPressed}
           value={this.state.term}
           placeholder={this.props.text}
         />
-        <SearchIcon className="fas fa-search" onClick={()=>this.searchAndUpdate()}/>
+        <SearchIcon className="fas fa-search" />
       </Bar>
     )
   }

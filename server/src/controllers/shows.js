@@ -24,7 +24,7 @@ module.exports = {
       const show = await Show.findById(req.params.id);
       if (!show) return res.status(404).send('Show not found.');
 
-      show.seatsAvailable = [...req.body.seatsAvailable];
+      show.seats = [...req.body.seats];
       show.reservations.push(req.body.reservation);
 
       await show.save();

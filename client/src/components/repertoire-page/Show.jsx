@@ -9,6 +9,12 @@ const Show = props => {
 
   const showPath = `/book-seats/${props.show._id}`;
 
+  const countSeats = seats => {
+    let counter = 0;
+    seats.forEach(seat => seat.isAvailable ? counter++ : seat);
+    return counter;
+  }
+
   return (
     <ShowContainer>
 
@@ -20,11 +26,11 @@ const Show = props => {
 
       <Title>{props.movie.title}</Title>
 
-      { props.show.seatsAvailable < 5 &&  props.show.seatsAvailable > 0 && <LastTicket>
+      { countSeats(props.show.seats) < 5 &&  countSeats(props.show.seats) > 0 && <LastTicket>
         Only few tickets left!
       </LastTicket>}
 
-      {props.show.seatsAvailable.length > 0 ?
+      { countSeats(props.show.seats) > 0 ?
         <BuyTickets to={ showPath }>
           Buy your ticket now!
         </BuyTickets> :

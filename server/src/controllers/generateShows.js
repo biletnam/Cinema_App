@@ -24,7 +24,7 @@ const generateShows = async (req, res) => {
         day: day,
         hour: startHour,
         prices: isWeekend ? premiumPrices : prices,
-        seatsAvailable: seats
+        seats: seats
       }
       return show;
     });
@@ -33,7 +33,7 @@ const generateShows = async (req, res) => {
         day: day,
         hour: primeTimeHour,
         prices: premiumPrices,
-        seatsAvailable: seats
+        seats: seats
     }
     shows.push(primeTimeShow);
 
@@ -54,7 +54,8 @@ const generateSeats = () => {
   for (let i = 1; i <= 100; i++) {
     const seat = {
       number: i,
-      isAvailable: true
+      isAvailable: true,
+      isReserved: false
     };
     seats.push(seat);
   }

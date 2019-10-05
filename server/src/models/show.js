@@ -22,7 +22,7 @@ const showSchema = new mongoose.Schema({
         type: Array,
         required: true
     },
-    seatsAvailable: {
+    seats: {
         type: Array,
         required: true
     },
@@ -44,7 +44,7 @@ function validateShow(show) {
         day: Joi.number().min(0).max(6).required(),
         hour: Joi.number().integer().min(10).max(22).required(),
         prices: Joi.array().required(),
-        seatsAvailable: Joi.array().min(0).max(100).required(),
+        seats: Joi.array().required(),
         reservations: Joi.array()
     }
     return Joi.validate(show, schema);

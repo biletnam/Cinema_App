@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Loader from '../Loader'
 import Seat from './Seat';
@@ -6,78 +7,44 @@ import { Room } from './styled/SeatStyle';
 import ShowHeader from './ShowHeader';
 import SelectedSeats from './SelectedSeats';
 
-import shows from '../../services/shows';
-import movies from '../../services/movies';
-
+import { getShow, getMovie, reserveSeat } from '../../store/actions';
 
 class Seats extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      show : {
-        seatsAvailable: {
-          isReserved: false
-        }
-      }
-    };
-    this.reserveSeat = this.reserveSeat.bind(this);
-    this.renderSeats = this.renderSeats.bind(this);
+
+  componentDidMount = async () => {
+    await this.props.getShow(this.props.showId);
+    await this.props.getMovie(this.props.show.movie);
   }
 
-  componentDidMount() {
-    this.getShow(this.props.showId)
-  }
-
-  getShow = async (id) => {
-    const response = await shows.get(`/${id}`);
-    const show = response.data;
-    this.setState({show: show});
-    this.getMovie(show.movie);
-  }
-
-  getMovie = async (id) => {
-    const response = await movies.get(`/${id}`);
-    const movie = response.data;
-    this.setState({movie: movie});
+  onSeatChoice = seatNo => {
+    this.props.reserveSeat(seatNo);
   }
 
   renderSeats() {
-    return this.state.show.seatsAvailable.map(seat => <Seat
+    return this.props.show.seats.map(seat => <Seat
+      show={this.props.show}
       key={seat.number}
       number={seat.number}
       isAvailable={seat.isAvailable}
       isReserved={seat.isReserved}
-      onSeatChoice={this.reserveSeat}
+      onSeatChoice={this.onSeatChoice}
     />);
-  }
-
-  reserveSeat(seatNo) {
-    const newStateShow = this.state.show;
-    newStateShow.seatsAvailable = this.state.show.seatsAvailable.map(seat => {
-      if (seat.number === seatNo) {
-        seat.isReserved = !seat.isReserved;
-        return seat;
-      } else {
-        return seat;
-      }
-    });
-    this.setState({ show: newStateShow });
   }
 
   render() {
     return(
-      this.state.movie ?
+      this.props.movie ?
         <>
           <ShowHeader
-            movie={ this.state.movie }
-            show={ this.state.show}
+            movie={ this.props.movie }
+            show={ this.props.show}
           />
           <Room>
             { this.renderSeats() }
           </Room>
           <SelectedSeats
-            seats={ this.state.show.seatsAvailable }
-            prices={ this.state.show.prices }
+            seats={ this.props.show.seats }
+            prices={ this.props.show.prices }
           />
         </>:
         <Loader />
@@ -85,4 +52,8 @@ class Seats extends React.Component {
   }
 }
 
-export default Seats;
+const mapStateToProps = state => {
+  return { show: state.show, movie: state.movie }
+}
+
+export default connect(mapStateToProps, { getShow, getMovie, reserveSeat })(Seats);

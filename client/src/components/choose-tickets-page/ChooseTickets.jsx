@@ -17,7 +17,7 @@ class ChooseTickets extends React.Component {
       )
     });
   }
-  
+
   renderSeats = () => {
     return this.props.show.seats.filter(seat => seat.isReserved).map((seat, i) => {
       return (
@@ -30,7 +30,7 @@ class ChooseTickets extends React.Component {
   }
 
   render() {
-    const reservationPath = `/reservation-page/${this.props.show._id}/`;
+    const reservationPath = `/reservation/${this.props.show._id}`;
 
     return(
       <TicketsContainer>

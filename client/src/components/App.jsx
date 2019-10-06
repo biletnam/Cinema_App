@@ -12,6 +12,7 @@ import MoviePage from './MoviePage'
 import RepertoirePage from './RepertoirePage';
 import BookSeatsPage from './BookSeatsPage';
 import ChooseTicketsPage from './ChooseTicketsPage';
+import ReservationPage from './ReservationPage';
 
 class App extends React.Component {
 
@@ -55,6 +56,8 @@ class App extends React.Component {
         <Route path="/book-seats/:id" component={ BookSeatsPage } />
 
         <Route path="/choose-tickets/:id" component={ ChooseTicketsPage } />
+
+        <Route path="/reservation/:id" component={ ReservationPage } />
 
       </BrowserRouter>
     );

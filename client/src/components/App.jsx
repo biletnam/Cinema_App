@@ -8,6 +8,7 @@ import { sortOptions } from './main-page/SelectBar';
 
 import Header from './Header';
 import MainPage from './MainPage';
+import MoviePage from './MoviePage'
 import RepertoirePage from './RepertoirePage';
 import BookSeatsPage from './BookSeatsPage';
 import ChooseTicketsPage from './ChooseTicketsPage';
@@ -24,6 +25,7 @@ class App extends React.Component {
 
   onSortSelect = sortOption => this.props.sortMovies(sortOption);
 
+
   render () {
     return (
       <BrowserRouter>
@@ -38,6 +40,12 @@ class App extends React.Component {
           />
         </Route>
 
+        <Route path="/movie-info">
+          <MoviePage
+          selectedMovie={ this.props.selectedMovie }
+          />
+        </Route>
+
         <Route path="/repertoire">
           <RepertoirePage
             movies={ this.props.movies }
@@ -47,6 +55,7 @@ class App extends React.Component {
         <Route path="/book-seats/:id" component={ BookSeatsPage } />
 
         <Route path="/choose-tickets/:id" component={ ChooseTicketsPage } />
+
 
       </BrowserRouter>
     );

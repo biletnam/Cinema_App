@@ -5,7 +5,7 @@ import { TitleContainer } from './styled/MovieInfoContainer';
 const Title = props => {
   return (
     <TitleContainer>
-        {`${props.selectedMovie.title}`}
+      {props.selectedMovie.title}
     </TitleContainer>
   );
 }

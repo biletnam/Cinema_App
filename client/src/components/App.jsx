@@ -42,7 +42,7 @@ class App extends React.Component {
 
         <Route path="/movie-info">
           <MoviePage
-          selectedMovie={ this.props.selectedMovie }
+            selectedMovie={ this.props.selectedMovie }
           />
         </Route>
 

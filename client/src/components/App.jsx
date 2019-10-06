@@ -10,6 +10,7 @@ import Header from './Header';
 import MainPage from './MainPage';
 import RepertoirePage from './RepertoirePage';
 import BookSeatsPage from './BookSeatsPage';
+import ChooseTicketsPage from './ChooseTicketsPage';
 
 class App extends React.Component {
 
@@ -44,6 +45,8 @@ class App extends React.Component {
         </Route>
 
         <Route path="/book-seats/:id" component={ BookSeatsPage } />
+
+        <Route path="/choose-tickets/:id" component={ ChooseTicketsPage } />
 
       </BrowserRouter>
     );

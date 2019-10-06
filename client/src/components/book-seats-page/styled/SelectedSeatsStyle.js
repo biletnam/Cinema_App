@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Display = styled.div`
   text-align: center;
@@ -21,14 +22,13 @@ export const Divider = styled.div`
   padding: 10px;
 `;
 
-export const ProceedBtn = styled.button`
+export const ProceedBtn = styled(Link)`
   background-color: green;
-  border: none;
   border-radius: 10px;
   color: ${props => props.theme.colors.main};
-  font: inherit;
-  margin: 20px auto;
-  outline: none;
+  display: block;
+  margin: 10px auto;
+  max-width: 350px;
   padding: 10px 20px;
   transition: color 0.5s;
   &:hover {

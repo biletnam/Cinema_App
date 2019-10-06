@@ -38,8 +38,9 @@ class Seats extends React.Component {
           <ShowHeader
             movie={ this.props.movie }
             show={ this.props.show}
-          />
+            />
           <SelectedSeats
+            show={ this.props.show}
             seats={ this.props.show.seats }
             prices={ this.props.show.prices }
           />

@@ -3,6 +3,8 @@ import React from 'react';
 import { Display, SelectedSeat, Divider, ProceedBtn } from './styled/SelectedSeatsStyle';
 
 const SelectedSeats = props => {
+  const ticketsPath = `/choose-tickets/${props.show._id}`;
+
   const seats = []
   props.seats.forEach(seat => seat.isReserved ? seats.push(seat) : seat);
 
@@ -40,7 +42,7 @@ const SelectedSeats = props => {
       </Divider>
 
       { seats.length > 0 &&
-        <ProceedBtn>
+        <ProceedBtn to={ ticketsPath }>
         confirm selection and proceed
         </ProceedBtn>
       }

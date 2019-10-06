@@ -36,3 +36,15 @@ export const MovieDetailsContainer = styled.div`
   width: 100%;
   font-size: 1em;
 `;
+
+export const PosterContainer = styled.div`
+  box-shadow: 0 0 8px 1px rgba(196, 196, 196, 0.2);
+  cursor: pointer;
+  height: 95%;
+  position: relative;
+  width: auto;
+`;
+
+export const Poster = styled.img`
+  height: 100%;
+`;

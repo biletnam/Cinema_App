@@ -4,10 +4,7 @@ import MainPageContainer from './styled/MainPageStyle';
 import Poster from './movie-page/Poster';
 import MovieDetails from './movie-page/MovieDetails';
 
-
-
 class MoviePage extends React.Component {
-
 
   render() {
     return(

@@ -13,8 +13,8 @@ class SearchBar extends React.Component{
   }
 
   searchAndUpdate(){
-    let regexp = new RegExp(`.*${this.state.term}.*`, 'i');
-    let matches = this.props.movies.filter(movie => movie.title.match(regexp));
+    const regexp = new RegExp(`.*${this.state.term}.*`, 'i');
+    const matches = this.props.movies.filter(movie => movie.title.match(regexp));
 
     if (matches.length>0){
       this.props.selectMovie(matches[0]);

@@ -8,26 +8,25 @@ import { Form, TicketSelect, PriceRadio, CheckoutBtn } from './styled/TicketSele
 class ChooseTickets extends React.Component {
 
   displayPrices = seatNumber => {
-    if(this.props.show.prices) {
-      return this.props.show.prices.map((price, i) => {
-        return (
-          <PriceRadio key={`${i}-${price.price}`}>
-            <input type="radio" id={price.ticketType} name={seatNumber} value={price.ticketType} required/>
-            <label htmlFor={price.ticketType}> {price.ticketType} - {price.price}</label>
-          </PriceRadio>
-        )
-      });
-    }
+    return this.props.show.prices.map((price, i) => {
+      return (
+        <PriceRadio key={`${i}-${price.price}`}>
+          <input type="radio" id={price.ticketType} name={seatNumber} value={price.ticketType} required/>
+          <label htmlFor={price.ticketType}> {price.ticketType} - {price.price}</label>
+        </PriceRadio>
+      )
+    });
   }
+  
   renderSeats = () => {
-      return this.props.show.seats.filter(seat => seat.isReserved).map((seat, i) => {
-        return (
-          <TicketSelect key={seat.number}>
-            <div>seat no. {seat.number}</div>
-            {this.displayPrices(seat.number)}
-          </TicketSelect>
-        )
-      });
+    return this.props.show.seats.filter(seat => seat.isReserved).map((seat, i) => {
+      return (
+        <TicketSelect key={seat.number}>
+          <div>seat no. {seat.number}</div>
+          {this.displayPrices(seat.number)}
+        </TicketSelect>
+      )
+    });
   }
 
   render() {

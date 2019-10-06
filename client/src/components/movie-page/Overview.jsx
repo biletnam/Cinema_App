@@ -5,7 +5,7 @@ import { OverviewContainer } from './styled/MovieInfoContainer';
 const Overview = props => {
   return (
     <OverviewContainer>
-        Overview: {`${props.selectedMovie.overview}`}
+      {`${props.selectedMovie.overview}`}
     </OverviewContainer>
   );
 }

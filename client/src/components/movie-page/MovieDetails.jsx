@@ -1,6 +1,5 @@
 import React from 'react';
 
-// import { MovieContainer } from '../main-page/styled/SelectedMovieStyle';
 import { MovieDetailsContainer } from './styled/MovieInfoContainer';
 import Title from './Title';
 import Rating from './Rating';

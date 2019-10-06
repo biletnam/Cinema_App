@@ -45,6 +45,8 @@ export const Poster = styled.img`
 
 export const BuyTickets = styled(Link)`
   grid-area: ticket;
+  max-width: 150px;
+  text-align: center;
   transition: color 0.3s;
 `;
 
@@ -54,6 +56,8 @@ export const SoldOut = styled.div`
   color: ${props => props.theme.colors.secondary};
   grid-area: ticket;
   padding: 5px 7px;
+  max-width: 150px;
+  text-align: center;
 `;
 
 export const LastTicket = styled.div`
@@ -62,4 +66,6 @@ export const LastTicket = styled.div`
   border-radius: 10px;
   color: ${props => props.theme.colors.main};
   padding: 5px 7px;
+  max-width: 120px;
+  text-align: center;
 `;

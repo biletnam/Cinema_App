@@ -56,7 +56,6 @@ class App extends React.Component {
 
         <Route path="/choose-tickets/:id" component={ ChooseTicketsPage } />
 
-
       </BrowserRouter>
     );
   }

@@ -1,5 +1,6 @@
 import movies from '../../services/movies';
 import shows from '../../services/shows';
+import reservations from '../../services/reservations';
 
 export const getMovies = () => async dispatch => {
   const response = await movies.get('/');
@@ -51,5 +52,29 @@ export const reserveSeat = seatNo => dispatch => {
   dispatch({
     type: 'RESERVE_SEAT',
     payload: seatNo,
+  });
+};
+
+export const getReservation = id => async dispatch => {
+  const response = await reservations.get(`/${id}`);
+  dispatch({
+    type: 'GET_RESERVATION',
+    payload: response.data,
+  });
+};
+
+export const getReservations = () => async dispatch => {
+  const response = await reservations.get(`/`);
+  dispatch({
+    type: 'GET_RESERVATIONS',
+    payload: response.data,
+  });
+};
+
+export const createReservation = body => async dispatch => {
+  const response = await reservations.post(`/`);
+  dispatch({
+    type: 'CREATE_RESERVATION',
+    payload: body,
   });
 };

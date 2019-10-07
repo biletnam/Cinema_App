@@ -13,7 +13,7 @@ import RepertoirePage from './RepertoirePage';
 import BookSeatsPage from './BookSeatsPage';
 import ChooseTicketsPage from './ChooseTicketsPage';
 import ReservationPage from './ReservationPage';
-
+import ConfirmReservationPage from './ConfirmReservationPage';
 class App extends React.Component {
 
   componentDidMount = async () => {
@@ -58,6 +58,8 @@ class App extends React.Component {
         <Route path="/choose-tickets/:id" component={ ChooseTicketsPage } />
 
         <Route path="/reservation/:id" component={ ReservationPage } />
+
+        <Route path="/reservationConfirm/:id" component={ConfirmReservationPage}/>
 
       </BrowserRouter>
     );

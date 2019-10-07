@@ -5,6 +5,7 @@ import movieReducer from './movieReducer';
 import selectedMovieReducer from './selectedMovieReducer';
 import showsReducer from './showsReducer';
 import showReducer from './showReducer';
+import reservationReducer from './reservationReducer';
 
 export default combineReducers({
   movies: moviesReducer,
@@ -12,4 +13,5 @@ export default combineReducers({
   movie: movieReducer,
   shows: showsReducer,
   show: showReducer,
+  reservation: reservationReducer,
 });

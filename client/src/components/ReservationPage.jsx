@@ -1,6 +1,8 @@
 import React from 'react';
 
+
 import Reservation from './reservation-page/Reservation';
+
 
 const ReservationPage = ({ match, location }) => {
 
@@ -10,7 +12,7 @@ const ReservationPage = ({ match, location }) => {
     tickets.push({ number: ticket[0], ticketType: ticket[1]});
   }
 
-  return <Reservation tickets={tickets} />;
+  return <Reservation showId={showId} tickets={tickets} />;
 }
 
 export default ReservationPage;
